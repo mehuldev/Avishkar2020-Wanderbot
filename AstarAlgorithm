@@ -1,5 +1,6 @@
 import numpy as np
 import math
+import matplotlib.pyplot as plt
 class cell:
     def __init__(self):
         self.parent = [-1,-1]
@@ -64,10 +65,6 @@ def astarAlgorithm(src,dest):
     cells[x][y].g = 0
     cells[x][y].h = 0
     grassFire(cells,src)
-    for a in cells:
-        for b in a:
-            print(b.h,end=' ')
-        print('')
     openList = []
     openList.append([0,src])
     foundDest = False
@@ -103,7 +100,7 @@ def astarAlgorithm(src,dest):
                     cells[x][y].parent = temp[1]
                     cells[x][y].f = fNew
                     cells[x][y].g = gNew
-                    cells[x][y].h = hNew
+                    #cells[x][y].h = hNew
         #CASE2: N
         y += 1
         if (isValid([x, y])):
@@ -120,7 +117,7 @@ def astarAlgorithm(src,dest):
                     cells[x][y].parent = temp[1]
                     cells[x][y].f = fNew
                     cells[x][y].g = gNew
-                    cells[x][y].h = hNew
+                    #cells[x][y].h = hNew
         #CASE3: N.E
         y += 1
         if (isValid([x, y])):
@@ -137,7 +134,7 @@ def astarAlgorithm(src,dest):
                     cells[x][y].parent = temp[1]
                     cells[x][y].f = fNew
                     cells[x][y].g = gNew
-                    cells[x][y].h = hNew
+                    #cells[x][y].h = hNew
         #CASE4: W
         x += 1
         y -= 2
@@ -155,7 +152,7 @@ def astarAlgorithm(src,dest):
                     cells[x][y].parent = temp[1]
                     cells[x][y].f = fNew
                     cells[x][y].g = gNew
-                    cells[x][y].h = hNew
+                    #cells[x][y].h = hNew
         #CASE5: E
         y += 2
         if (isValid([x, y])):
@@ -172,7 +169,7 @@ def astarAlgorithm(src,dest):
                     cells[x][y].parent = temp[1]
                     cells[x][y].f = fNew
                     cells[x][y].g = gNew
-                    cells[x][y].h = hNew
+                    #cells[x][y].h = hNew
         #CASE6: S.W
         x += 1
         y -= 2
@@ -190,7 +187,7 @@ def astarAlgorithm(src,dest):
                     cells[x][y].parent = temp[1]
                     cells[x][y].f = fNew
                     cells[x][y].g = gNew
-                    cells[x][y].h = hNew
+                    #cells[x][y].h = hNew
         #CASE7: S
         y += 1
         if (isValid([x, y])):
@@ -207,7 +204,7 @@ def astarAlgorithm(src,dest):
                     cells[x][y].parent = temp[1]
                     cells[x][y].f = fNew
                     cells[x][y].g = gNew
-                    cells[x][y].h = hNew
+                    #cells[x][y].h = hNew
         #CASE8: S.E
         y += 1
         if (isValid([x, y])):
@@ -224,7 +221,7 @@ def astarAlgorithm(src,dest):
                     cells[x][y].parent = temp[1]
                     cells[x][y].f = fNew
                     cells[x][y].g = gNew
-                    cells[x][y].h = hNew
+                    #cells[x][y].h = hNew
     if(foundDest):
         print(tracePath(cells,dest))
     else:
@@ -239,7 +236,7 @@ if __name__=='__main__':
     maze = [[1, 1, 1, 1, 1],
         [1 ,1 ,1 ,0 ,1],
         [0, 0, 1, 0, 1],
-        [1 ,1 ,1 ,0 ,0],
+        [1 ,1 ,1 ,0 ,1],
         [1, 0, 1, 0, 1],
         [1 ,0 ,1 ,1 ,1],
         [1, 0, 1, 0, 1],
@@ -254,5 +251,11 @@ if __name__=='__main__':
     dims = [8,5]
     src = [0,0]
     dest = [7,0]
+    plt.pcolormesh(maze)
+    plt.axes().set_aspect('equal')  # set the x and y axes to the same scale
+    plt.xticks([])  # remove the tick marks by setting to an empty list
+    plt.yticks([])  # remove the tick marks by setting to an empty list
+    plt.axes().invert_yaxis()  # invert the y-axis so the first row of data is at the top
     astarAlgorithm(src,dest)
+    plt.show()
 
