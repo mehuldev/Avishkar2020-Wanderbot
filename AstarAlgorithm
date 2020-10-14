@@ -10,8 +10,25 @@ class cell:
 def isValid(coordinates):
     return (coordinates[0] in range(dims[0]) and coordinates[1] in range(dims[1]) and maze[coordinates[0]][coordinates[1]])
 
-def calculateHeuristics(src,dest):
-    return abs(src[0]-dest[0]) + abs(src[1]-dest[1])
+def grassFire(cells,src):
+    tempList = []
+    tempList.append(src)
+    while(len(tempList)):
+        temp = tempList[0]
+        x,y = temp
+        tempList.pop(0)
+        if(isValid([x-1,y]) and cells[x-1][y].h == math.inf):
+            cells[x-1][y].h = min(cells[x][y].h + 1,cells[x-1][y].h)
+            tempList.append([x-1,y])
+        if(isValid([x,y-1]) and cells[x][y-1].h == math.inf):
+            cells[x][y-1].h = min(cells[x][y].h + 1,cells[x][y-1].h)
+            tempList.append([x,y-1])
+        if(isValid([x,y+1]) and cells[x][y+1].h == math.inf):
+            cells[x][y+1].h = min(cells[x][y].h + 1,cells[x][y+1].h)
+            tempList.append([x,y+1])
+        if(isValid([x+1,y]) and cells[x+1][y].h == math.inf):
+            cells[x+1][y].h = min(cells[x][y].h + 1,cells[x+1][y].h)
+            tempList.append([x+1,y])
 
 def tracePath(cells,dest):
     x,y = dest
@@ -40,11 +57,17 @@ def astarAlgorithm(src,dest):
         for j in range(dims[1]):
             temp12.append(cell())
         cells.append(temp12)
+
     x,y = src
     cells[x][y].parent=[x,y]
     cells[x][y].f = 0
     cells[x][y].g = 0
     cells[x][y].h = 0
+    grassFire(cells,src)
+    for a in cells:
+        for b in a:
+            print(b.h,end=' ')
+        print('')
     openList = []
     openList.append([0,src])
     foundDest = False
@@ -72,7 +95,7 @@ def astarAlgorithm(src,dest):
                 break
             if(not  closedList[x][y]):
                 gNew = cells[temp[1][0]][temp[1][1]].g+1
-                hNew = calculateHeuristics([x,y],dest)
+                hNew = cells[x][y].h
                 fNew = gNew + hNew
                 #print(cells[x][y].f)
                 if(cells[x][y].f > fNew):
@@ -90,7 +113,7 @@ def astarAlgorithm(src,dest):
                 break
             if (not closedList[x][y]):
                 gNew = cells[temp[1][0]][temp[1][1]].g + 1
-                hNew = calculateHeuristics([x, y], dest)
+                hNew = cells[x][y].h
                 fNew = gNew + hNew
                 if (cells[x][y].f > fNew):
                     openList.append([fNew, [x, y]])
@@ -107,7 +130,7 @@ def astarAlgorithm(src,dest):
                 break
             if (not closedList[x][y]):
                 gNew = cells[temp[1][0]][temp[1][1]].g + 1
-                hNew = calculateHeuristics([x, y], dest)
+                hNew = cells[x][y].h
                 fNew = gNew + hNew
                 if (cells[x][y].f > fNew):
                     openList.append([fNew, [x, y]])
@@ -125,7 +148,7 @@ def astarAlgorithm(src,dest):
                 break
             if (not closedList[x][y]):
                 gNew = cells[temp[1][0]][temp[1][1]].g + 1
-                hNew = calculateHeuristics([x, y], dest)
+                hNew = cells[x][y].h
                 fNew = gNew + hNew
                 if (cells[x][y].f > fNew):
                     openList.append([fNew, [x, y]])
@@ -142,7 +165,7 @@ def astarAlgorithm(src,dest):
                 break
             if (not closedList[x][y]):
                 gNew = cells[temp[1][0]][temp[1][1]].g + 1
-                hNew = calculateHeuristics([x, y], dest)
+                hNew = cells[x][y].h
                 fNew = gNew + hNew
                 if (cells[x][y].f > fNew):
                     openList.append([fNew, [x, y]])
@@ -160,7 +183,7 @@ def astarAlgorithm(src,dest):
                 break
             if (not closedList[x][y]):
                 gNew = cells[temp[1][0]][temp[1][1]].g + 1
-                hNew = calculateHeuristics([x, y], dest)
+                hNew = cells[x][y].h
                 fNew = gNew + hNew
                 if (cells[x][y].f > fNew):
                     openList.append([fNew, [x, y]])
@@ -177,7 +200,7 @@ def astarAlgorithm(src,dest):
                 break
             if (not closedList[x][y]):
                 gNew = cells[temp[1][0]][temp[1][1]].g + 1
-                hNew = calculateHeuristics([x, y], dest)
+                hNew = cells[x][y].h
                 fNew = gNew + hNew
                 if (cells[x][y].f > fNew):
                     openList.append([fNew, [x, y]])
@@ -194,7 +217,7 @@ def astarAlgorithm(src,dest):
                 break
             if (not closedList[x][y]):
                 gNew = cells[temp[1][0]][temp[1][1]].g + 1
-                hNew = calculateHeuristics([x, y], dest)
+                hNew = cells[x][y].h
                 fNew = gNew + hNew
                 if (cells[x][y].f > fNew):
                     openList.append([fNew, [x, y]])
@@ -221,6 +244,12 @@ if __name__=='__main__':
         [1 ,0 ,1 ,1 ,1],
         [1, 0, 1, 0, 1],
         [1 ,1 ,1 ,1 ,1 ]]
+    '''maze = [
+        [1,1,1,1],
+        [1,1,1,1],
+        [1,1,1,1],
+        [1,1,1,1]
+        ]'''
     global dims
     dims = [8,5]
     src = [0,0]
