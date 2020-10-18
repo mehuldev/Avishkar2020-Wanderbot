@@ -12,7 +12,7 @@ import numpy as np
 from cv2 import cv2
 from PIL import Image
 import matplotlib.pyplot as plt
-
+import AstarAlgorithm as Astar
 
 
 clid = p.connect(p.SHARED_MEMORY)
@@ -70,7 +70,8 @@ for x in range(89):
 	for y in range(89):
 		if(mat[x, y] == 0):
 			# import black box
-			p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [x/4-11, y/4-11, 0.2], useFixedBase=1 )
+			cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [x/4-11, y/4-11, 0.2], useFixedBase=1 )
+			p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
 
 
 
@@ -793,12 +794,21 @@ def calculate_position_for_husky(x2, y2, z2):
 
 	return x, y, z2
 
-
+def convertCoordinates(x,y):
+	x = x/4-11
+	y = y/4-11
+	return x,y
 def pick_cube_from(cubePosition):
 	[x2, y2, z2] = cubePosition
 	x, y, z = calculate_position_for_husky(x2, y2, z2)
 	# print('move husky to ',x, y, z)
-	move_husky_to_point(x, y, z)
+	path = Astar.calculateShortestPath([x,y],[x2,y2])
+	for y,x in path[:-1]:
+		x,y = convertCoordinates(x,y)
+		print(x,y)
+		move_husky_to_point(x, y, z)
+	print(x2,y2)
+	move_husky_to_point(x2,y2,z2)
 
 	initialOrientation = p.getLinkStates(kukaId, [6])[0][1]
 	initialOrientation = p.getEulerFromQuaternion(initialOrientation)
@@ -876,9 +886,9 @@ start = time.time()
 
 
 
-# for i in range(len(positionsCube)):
-# 	pick_cube_from([positionsCube[i][0], positionsCube[i][1], 0])
-# 	place_cube_to([positionsPatch[i][0], positionsPatch[i][1], 0])
+for i in range(len(positionsCube)):
+ 	pick_cube_from([positionsCube[i][0], positionsCube[i][1], 0])
+ 	place_cube_to([positionsPatch[i][0], positionsPatch[i][1], 0])
 
 # move_husky_to_point(0,0,0)
 
