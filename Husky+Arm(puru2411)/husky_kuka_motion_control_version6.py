@@ -792,7 +792,7 @@ def calculate_position_for_husky(x2, y2, z2):
 	x = x2 + t*(x1-x2)
 	y = y2 + t*(y1-y2)
 
-	return x, y, z2
+	return x, y, z2,x1,y1
 
 def convertCoordinates(x,y):
 	x = x/4-11
@@ -800,15 +800,14 @@ def convertCoordinates(x,y):
 	return x,y
 def pick_cube_from(cubePosition):
 	[x2, y2, z2] = cubePosition
-	x, y, z = calculate_position_for_husky(x2, y2, z2)
-	# print('move husky to ',x, y, z)
-	path = Astar.calculateShortestPath([x,y],[x2,y2])
-	for y,x in path[:-1]:
-		x,y = convertCoordinates(x,y)
-		print(x,y)
-		move_husky_to_point(x, y, z)
-	print(x2,y2)
-	move_husky_to_point(x2,y2,z2)
+	x, y, z,x1,y1 = calculate_position_for_husky(x2, y2, z2)
+	print('move husky to ',x, y, z)
+	path = Astar.calculateShortestPath([x1,y1],[x,y])
+	for y3,x3 in path:
+		x3,y3 = convertCoordinates(x3,y3)
+		print(x3,y3)
+		move_husky_to_point(x3, y3, z)
+	move_husky_to_point(x,y,z)
 
 	initialOrientation = p.getLinkStates(kukaId, [6])[0][1]
 	initialOrientation = p.getEulerFromQuaternion(initialOrientation)
@@ -884,7 +883,7 @@ start = time.time()
 # what you want from husky to do for you!
 # write you code bellow :-)
 
-
+pick_cube_from([9,0,0])
 
 for i in range(len(positionsCube)):
  	pick_cube_from([positionsCube[i][0], positionsCube[i][1], 0])
