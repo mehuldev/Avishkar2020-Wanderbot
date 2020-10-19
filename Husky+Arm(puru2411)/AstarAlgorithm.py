@@ -286,6 +286,17 @@ def modify_path(src,path):
             i += 1
         else:
             path.pop(i-1)
+
+    for i in range(len(path)):
+        x,y = path[i]
+        if(maze[x][y-1] == 0):    # Wall on left
+            path[i][1] += 2
+        elif(maze[x][y+1] == 0): #Wall on right
+            path[i][1] -= 2
+        if(maze[x-1][y] == 0):   #Wall on upper side
+            path[i][0] += 2
+        elif(maze[x+1][y] == 0): # Wall on down side
+            path[i][0] -= 2
     return path
 
 
@@ -355,6 +366,7 @@ def calculateShortestPath(src,dest):
     convertCoordinates(dest)
     print(src,dest)
     path = astarAlgorithm(src, dest)
+    print(path)
     path = modify_path(src,path)
     print('')
     print(path)
