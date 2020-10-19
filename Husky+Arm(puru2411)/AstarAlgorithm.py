@@ -266,6 +266,33 @@ def convertCoordinates(coordinates):
 	coordinates[1] = math.floor(4*(coordinates[1]+11))
 	return
 
+def modify_path(src,path):
+    if(len(path) < 3):
+        return path
+    tempList = []
+    i = 1
+    prev = src
+    while(i < len(path)):
+        fromX = min(prev[0],path[i][0])
+        toX = prev[0]+path[i][0]-fromX+1
+        fromY = min(prev[1],path[i][1])
+        toY = prev[1]+path[i][1]-fromY+1
+        total = 0
+        for x in range(fromX,toX):
+            for y in range(fromY,toY):
+                total += maze[x][y]
+        if(total < (toX-fromX)*(toY-fromY)):
+            prev = path[i-1]
+            i += 1
+        else:
+            path.pop(i-1)
+    return path
+
+
+            
+
+
+
 def calculateShortestPath(src,dest):
     '''Description of Maze -
         1 --> Cell is not blocked
@@ -327,15 +354,14 @@ def calculateShortestPath(src,dest):
     convertCoordinates(src)
     convertCoordinates(dest)
     print(src,dest)
-    src.reverse()
-    dest.reverse()
     path = astarAlgorithm(src, dest)
+    path = modify_path(src,path)
     print('')
     print(path)
     print('')
-    return path
-    x = [x[0] for x in path[1:-1]]
-    y = [y[1] for y in path[1:-1]]
+    return path[:-1]
+    x = [x[0] for x in path[:-1]]
+    y = [y[1] for y in path[:-1]]
     #Just extra function to plot the maze for crossverification
     '''plt.pcolormesh(maze)
     plt.plot(maze)
