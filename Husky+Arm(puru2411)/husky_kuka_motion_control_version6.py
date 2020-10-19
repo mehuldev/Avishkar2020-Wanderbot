@@ -801,17 +801,19 @@ def convertCoordinates(x,y):
 def pick_cube_from(cubePosition):
 	[x2, y2, z2] = cubePosition
 	x, y, z,x1,y1 = calculate_position_for_husky(x2, y2, z2)
-	print('move husky to ',x, y, z)
-	path = Astar.calculateShortestPath([x1,y1],[x,y])
-	for y3,x3 in path:
+	#print('move husky to ',x, y, z)
+	path = Astar.calculateShortestPath([x1,y1],[x2,y2])
+	path = Astar.calculateShortestPath([x1,y1],[x2,y2])
+	for x3,y3 in path:
 		x3,y3 = convertCoordinates(x3,y3)
 		print(x3,y3)
-		move_husky_to_point(x3, y3, z)
+		move_husky_to_point(x3, y3, z2)
+	print(x,y)
 	move_husky_to_point(x,y,z)
-
+	print('1')
 	initialOrientation = p.getLinkStates(kukaId, [6])[0][1]
 	initialOrientation = p.getEulerFromQuaternion(initialOrientation)
-
+	print('2')
 	# print("husky orientation ", initialOrientation)
 	time.sleep(.5)
 	# move_endeffector_to_point([x2, y2, 1], [0, np.pi/2, 0])
@@ -819,12 +821,12 @@ def pick_cube_from(cubePosition):
 	move_endeffector_to_point([x2, y2, .1], [0, np.pi/2, 0])
 	time.sleep(1)
 	hold(1)
-
+	print('3')
 	move_endeffector_to_point([x2, y2, .4], [0, np.pi/2, 0])
 	# move_endeffector_to_point([x2, y2, 1], [0, np.pi/2, 0])
 	move_endeffector_to_point([x2, y2, 1], initialOrientation)
 	time.sleep(1)
-
+	print('4')
 def place_cube_to(cubePosition):
 	[x2, y2, z2] = cubePosition
 	x, y, z = calculate_position_for_husky(x2, y2, z2)
@@ -883,7 +885,6 @@ start = time.time()
 # what you want from husky to do for you!
 # write you code bellow :-)
 
-pick_cube_from([9,0,0])
 
 for i in range(len(positionsCube)):
  	pick_cube_from([positionsCube[i][0], positionsCube[i][1], 0])
