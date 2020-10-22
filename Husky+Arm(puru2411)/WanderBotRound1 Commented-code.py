@@ -105,34 +105,34 @@ p.setRealTimeSimulation(useRealTimeSimulation)
 ################################################################################################################
 # image captureing and processing
 
-"""-------------Image Processing and Object Detection---------------------"""
+"""----------------------Image Processing and Object Detection-----------------------------"""
 
 
 def boxDetection2411(rgbaImg, width, height):
-	"""
-	Takes RGBA image along with height and width and returns positions of cubes in reference frame
-	"""
-	rgba = bytes(rgbaImg)
-	# Make a new image object from the bytes
-	img = Image.frombytes('RGBA', (width, height), rgba)
-	opencv_img = np.array(img)
+    """
+    Takes Image frame along with width and height and returns positions of cube with respect to reference frame
+    """
+    rgba = bytes(rgbaImg)
+    # Make a new image object from the bytes
+    img = Image.frombytes('RGBA', (width, height), rgba)
+    opencv_img = np.array(img)
 
-	# Converting RGBA image to RGB(dropping alpha channel)
-	rgbImage = cv2.cvtColor(opencv_img, cv2.COLOR_RGBA2RGB)
-	# Converting RGB image to HSV(For Color detection)
-	hsvFrame = cv2.cvtColor(rgbImage, cv2.COLOR_RGB2HSV)
-	# Converting RGB image to BGR
-	imageFrame = cv2.cvtColor(rgbImage, cv2.COLOR_RGB2BGR)
+    # Converting RGBA image to RGB(dropping alpha channel)
+    rgbImage = cv2.cvtColor(opencv_img, cv2.COLOR_RGBA2RGB)
+    # Converting RGB image to HSV(For Color detection)
+    hsvFrame = cv2.cvtColor(rgbImage, cv2.COLOR_RGB2HSV)
+    # Converting RGB image to BGR
+    imageFrame = cv2.cvtColor(rgbImage, cv2.COLOR_RGB2BGR)
 
     # Set range for red color and define mask
-	red_lower = np.array([0, 70, 50], np.uint8)
-	red_upper = np.array([10, 255, 255], np.uint8)
-	red_mask = cv2.inRange(hsvFrame, red_lower, red_upper)
+    red_lower = np.array([0, 70, 50], np.uint8)
+    red_upper = np.array([10, 255, 255], np.uint8)
+    red_mask = cv2.inRange(hsvFrame, red_lower, red_upper)
 
     # Set range for green color and define mask
-	green_lower = np.array([40, 52, 72], np.uint8)
-	green_upper = np.array([70, 255, 255], np.uint8)
-	green_mask = cv2.inRange(hsvFrame, green_lower, green_upper)
+    green_lower = np.array([40, 52, 72], np.uint8)
+    green_upper = np.array([70, 255, 255], np.uint8)
+    green_mask = cv2.inRange(hsvFrame, green_lower, green_upper)
 
     # Set range for blue color and define mask
     blue_lower = np.array([110, 80, 2], np.uint8)
