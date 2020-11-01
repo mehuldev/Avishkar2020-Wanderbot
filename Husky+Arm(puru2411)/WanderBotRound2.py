@@ -693,8 +693,8 @@ def move_husky_to_point(x, y, z):
 			p.setJointMotorControl2(husky,wheels[i],p.VELOCITY_CONTROL,targetVelocity=wheelVelocities[i],force=1000)
 
 
-	# move kukaId forward to destination 
-	while abs(deltaX)>= 0.005 or abs(deltaY)>=0.005 :
+	# move husky robot forward to destination 
+	while abs(deltaX)>= 0.05 or abs(deltaY)>=0.05 :
 		# images = p.getCameraImage(width, height, view_matrix, projection_matrix, shadow=True, renderer=p.ER_BULLET_HARDWARE_OPENGL)
 
 		deltaX, deltaY, rotation, currOrientation, currPosition = get_target_parameters(x, y, z)
@@ -880,15 +880,21 @@ def pick_cube_from(cubePosition):
 	x1, y1, z1 = p.getLinkStates(husky, [0])[0][0]
 	path = Astar.calculateShortestPath([x1,y1],[x2,y2])
 	i=0
+	print("going to pick at " , x2, y2)
+	print("path : ", path)
 	for i in range(len(path)-1):
 		x3,y3 = path[i]
 		x3,y3 = convertCoordinates(x3,y3)
-		print(x3,y3)
+		if(np.sqrt((x2-x3)**2 + (y2-y3)**2)<=0.8):
+			break
+		print(i, ')', x3,y3)
 		move_husky_to_point(x3, y3, z2)
 	
-	x3,y3 = path[len(path)-1]
-	x3,y3 = convertCoordinates(x3,y3)
-	x, y, z = calculate_position_for_husky(x3, y3, z2)
+	# x3,y3 = path[len(path)-1]
+	# x3,y3 = convertCoordinates(x3,y3)
+	print(len(path)-1, ').', x2, y2)
+	x, y, z = calculate_position_for_husky(x2, y2, z2)
+	print("will stop at ", x, y)
 	move_husky_to_point(x, y, z)
 
 	initialOrientation = p.getLinkStates(kukaId, [6])[0][1]
@@ -913,15 +919,21 @@ def place_cube_to(cubePosition):
 	x1, y1, z1 = p.getLinkStates(husky, [0])[0][0]
 	path = Astar.calculateShortestPath([x1,y1],[x2,y2])
 	i =0
+	print("going to place at " , x2, y2)
+	print("path : ", path)
 	for i in range(len(path)-1):
 		x3,y3 = path[i]
 		x3,y3 = convertCoordinates(x3,y3)
-		print(x3,y3)
+		if(np.sqrt((x2-x3)**2 + (y2-y3)**2)<=0.8):
+			break
+		print(i, ')', x3,y3)
 		move_husky_to_point(x3, y3, z2)
 
-	x3,y3 = path[len(path)-1]
-	x3,y3 = convertCoordinates(x3,y3)
-	x, y, z = calculate_position_for_husky(x3, y3, z2)
+	# x3,y3 = path[len(path)-1]
+	# x3,y3 = convertCoordinates(x3,y3)
+	print(len(path)-1, ').', x2, y2)
+	x, y, z = calculate_position_for_husky(x2, y2, z2)
+	print("will stop at ", x, y, "\n")
 	move_husky_to_point(x, y, z)
 
 	initialOrientation = p.getLinkStates(kukaId, [6])[0][1]

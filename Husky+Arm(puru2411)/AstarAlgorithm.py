@@ -369,7 +369,7 @@ def calculateShortestPath(src,dest):
     # print(path)
     path = modify_path(src,path)
     # print('')
-    print(path)
+    # print(path)
     # print('')
     return path[:]
     x = [x[0] for x in path[:-1]]
