@@ -622,7 +622,10 @@ def get_kuka_angles(basePosition, baseOrientation, point, orientation):
 def speed_for_rotation(rotation, currOrientation):  # spiting out the rotation speed according to proportionality
 	kp = 7
 	Vmax = 5
-	v = kp*(currOrientation - rotation)
+	if(abs(currOrientation - rotation) < np.pi):
+		v = kp*(currOrientation - rotation)
+	else:
+		v = kp*(rotation - currOrientation)
 
 	if(v>Vmax):
 		v = Vmax
