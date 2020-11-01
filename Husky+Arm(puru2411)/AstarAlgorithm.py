@@ -364,14 +364,14 @@ def calculateShortestPath(src,dest):
     dims = [89,89]
     convertCoordinates(src)
     convertCoordinates(dest)
-    print(src,dest)
+    # print(src,dest)
     path = astarAlgorithm(src, dest)
-    print(path)
+    # print(path)
     path = modify_path(src,path)
-    print('')
+    # print('')
     print(path)
-    print('')
-    return path[:-1]
+    # print('')
+    return path[:]
     x = [x[0] for x in path[:-1]]
     y = [y[1] for y in path[:-1]]
     #Just extra function to plot the maze for crossverification
