@@ -1,7 +1,5 @@
 # code by Team !ABHIMANYU  MNNIT allahabad { git ---->  PURU2411 }
-# this code uses the external inverse kinematics function
-# image processing iplemented
-# matrix implemented 
+# round 2 final code
 
 import pybullet as p
 import time
@@ -30,152 +28,42 @@ p.loadURDF("plane.urdf", [0, 0, 0.0])
 p.setGravity(0, 0, -10)
 
 
+# # making boundary and maze 
+# mat = np.ones((89, 89))
+# for y in range(89):
+# 	mat[0, y] = 0
+# 	mat[88, y] = 0
 
-# making boundary 
-cubea = p.loadURDF("cubes/urdf/cube_small_extended_in_Y_direction.urdf", basePosition= [11.25, 0, 0.1], useFixedBase=1 )
-p.changeVisualShape(cubea , -1, rgbaColor=[0, 0, 0, 1])
-cubeb = p.loadURDF("cubes/urdf/cube_small_extended_in_Y_direction.urdf", basePosition= [-11.25, 0, 0.1] , useFixedBase=1)
-p.changeVisualShape(cubeb , -1, rgbaColor=[0, 0, 0, 1])
-cubec = p.loadURDF("cubes/urdf/cube_small_extended_in_X_direction.urdf", basePosition= [0, 11.25, 0.1] , useFixedBase=1)
-p.changeVisualShape(cubec , -1, rgbaColor=[0, 0, 0, 1])
-cubed = p.loadURDF("cubes/urdf/cube_small_extended_in_X_direction.urdf", basePosition= [0, -11.25, 0.1], useFixedBase=1 )
-p.changeVisualShape(cubed , -1, rgbaColor=[0, 0, 0, 1])
+# for x in range(89):
+# 	mat[x, 0] = 0
+# 	mat[x, 88] = 0
 
+# for y in range(24, 65):
+# 	mat[12, y] = 0
 
-mat = np.ones((89, 89))
-
-
-# making boundary and maze 
-for y in range(89):
-	mat[0, y] = 0
-	mat[88, y] = 0
-
-for x in range(89):
-	mat[x, 0] = 0
-	mat[x, 88] = 0
-
-for y in range(24, 65):
-	mat[12, y] = 0
-
-for y in range(24, 65):
-	mat[76, y] = 0
+# for y in range(24, 65):
+# 	mat[76, y] = 0
 	
-for y in range(8, 33):
-	mat[28, y] = 0
+# for y in range(8, 33):
+# 	mat[28, y] = 0
 	
-for y in range(56, 82):
-	mat[28, y] = 0
+# for y in range(56, 82):
+# 	mat[28, y] = 0
 
-for y in range(8, 33):
-	mat[60, y] = 0
+# for y in range(8, 33):
+# 	mat[60, y] = 0
 	
-for y in range(56, 82):
-	mat[60, y] = 0
+# for y in range(56, 82):
+# 	mat[60, y] = 0
 
-for x in range(36, 53):
-	mat[x, 20] = 0
+# for x in range(36, 53):
+# 	mat[x, 20] = 0
 	
-for x in range(36, 53):
-	mat[x, 68] = 0
+# for x in range(36, 53):
+# 	mat[x, 68] = 0
 
-
-# making the maze	
-
-y1 = 3
-y2 = -3
-cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [4, y1, 0.2], useFixedBase=1 )
-p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [4, y2, 0.2], useFixedBase=1 )
-p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-for _ in range(6):
-
-	cube = p.loadURDF("cubes/urdf/y_segment.urdf", basePosition= [4, y1+0.5, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-	y1+=1
-	cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [4, y1, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-	
-	cube = p.loadURDF("cubes/urdf/y_segment.urdf", basePosition= [4, y2-0.5, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-	y2-=1
-	cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [4, y2, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-	
-y1=0
-y2=0
-cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [8,y1 ,0.2], useFixedBase=1 )
-p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-for _ in range(5):
-
-	cube = p.loadURDF("cubes/urdf/y_segment.urdf", basePosition= [8, y1+0.5, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-	y1+=1
-	cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [8, y1, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-	
-	cube = p.loadURDF("cubes/urdf/y_segment.urdf", basePosition= [8, y2-0.5, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-	y2-=1
-	cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [8, y2, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-
-y1 = 3
-y2 = -3
-cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [-4, y1+0.5, 0.2], useFixedBase=1 )
-p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [-4, y2, 0.2], useFixedBase=1 )
-p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-for _ in range(6):
-
-	cube = p.loadURDF("cubes/urdf/y_segment.urdf", basePosition= [-4, y1+0.5, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-	y1+=1
-	cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [-4, y1, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-	
-	cube = p.loadURDF("cubes/urdf/y_segment.urdf", basePosition= [-4, y2-0.5, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-	y2-=1
-	cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [-4, y2, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-	
-y1=0
-y2=0
-cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [-8,y1 ,0.2], useFixedBase=1 )
-p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-for _ in range(5):
-
-	cube = p.loadURDF("cubes/urdf/y_segment.urdf", basePosition= [-8, y1+0.5, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-	y1+=1
-	cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [-8, y1, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-	
-	cube = p.loadURDF("cubes/urdf/y_segment.urdf", basePosition= [-8, y2-0.5, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-	y2-=1
-	cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [-8, y2, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-
-x1=-2
-x2=-2
-cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [x1, 6, 0.2], useFixedBase=1 )
-p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [x2, -6, 0.2], useFixedBase=1 )
-p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-for _ in range(4):
-	cube = p.loadURDF("cubes/urdf/x_segment.urdf", basePosition= [x1+0.5, 6, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-	x1+=1
-	cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [x1, 6, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-	
-	cube = p.loadURDF("cubes/urdf/x_segment.urdf", basePosition= [x2+0.5, -6, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-	x2+=1
-	cube = p.loadURDF("cubes/urdf/xy_segment.urdf", basePosition= [x2, -6, 0.2], useFixedBase=1 )
-	p.changeVisualShape(cube , -1, rgbaColor=[0, 0, 0, 1])
-
+# making the maze 
+spawn_cube_patch.spawn_maze(physicsClient)
 
 # placing cubes and patchs
 spawn_cube_patch.spawn_cube_and_patch(physicsClient)
@@ -401,9 +289,7 @@ print("\nposition of cubes (R, G, B, O, Y, P) : ", cubePositions, "\n")
 
 print("\nposition of cube holders (R, G, B, O, Y, P) : ", patchPositions, '\n')
 
-# pos = []
-# for i in range(len(positions)):
-# 	pos.append([])
+
 
 ################################################################################################################
 ################################################################################################################
@@ -956,6 +842,25 @@ def place_cube_to(cubePosition):
 	time.sleep(1)
 
 
+def move_husky_to_point_in_maze(x, y, z):
+	x1, y1, z1 = p.getLinkStates(husky, [0])[0][0]
+	path = Astar.calculateShortestPath([x, y], [x1, y1])
+	for i in range(len(path)-1):
+		x3,y3 = path[i]
+		x3,y3 = convertCoordinates(x3,y3)
+		if(np.sqrt((x-x3)**2 + (y-y3)**2)<=0.8):
+			break
+		move_husky_to_point(x3, y3, z1)
+
+	move_husky_to_point(x, y, z)
+
+def wave_at(x, y, z):
+	move_endeffector_to_point([x, y, 1.5], [0, -np.pi/2, 0])
+	for _ in range(4):
+		move_endeffector_to_point([x, y-0.5, 1.25], [0, 0, -np.pi/2])
+		move_endeffector_to_point([x, y, 1.5], [0, -np.pi/2, 0])
+
+
 ################################################################################################################
 ################################################################################################################
 
@@ -997,8 +902,8 @@ for key in cubePositions.keys():
 	pick_cube_from([cubePositions[key][0], cubePositions[key][1], 0])
 	place_cube_to([patchPositions[key][0], patchPositions[key][1], 0])
 
-move_husky_to_point(0,0,0)
-
+move_husky_to_point_in_maze(0,0,0)
+wave_at(0, 0, 0)
 
 ################################################################################################################
 ################################################################################################################

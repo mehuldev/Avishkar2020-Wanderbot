@@ -1,6 +1,25 @@
 import pybullet as p
 
 
+def spawn_maze(physicsClient):
+
+	p.loadURDF("cubes/urdf/cube_small_extended_in_Y_direction.urdf", basePosition= [11.25, 0, 0.1], useFixedBase=1, physicsClientId=physicsClient)
+	p.loadURDF("cubes/urdf/cube_small_extended_in_Y_direction.urdf", basePosition= [-11.25, 0, 0.1], useFixedBase=1, physicsClientId=physicsClient)
+	p.loadURDF("cubes/urdf/cube_small_extended_in_X_direction.urdf", basePosition= [0, 11.25, 0.1] , useFixedBase=1, physicsClientId=physicsClient)
+	p.loadURDF("cubes/urdf/cube_small_extended_in_X_direction.urdf", basePosition= [0, -11.25, 0.1], useFixedBase=1, physicsClientId=physicsClient)
+	
+	p.loadURDF("cubes/urdf/10y_segment.urdf", basePosition= [8, 0, 0.2], useFixedBase=1, physicsClientId=physicsClient)
+	p.loadURDF("cubes/urdf/10y_segment.urdf", basePosition= [-8, 0, 0.2], useFixedBase=1, physicsClientId=physicsClient)
+	p.loadURDF("cubes/urdf/6y_segment.urdf", basePosition= [4, 6, 0.2], useFixedBase=1, physicsClientId=physicsClient)
+	p.loadURDF("cubes/urdf/6y_segment.urdf", basePosition= [4, -6, 0.2] , useFixedBase=1, physicsClientId=physicsClient)
+	p.loadURDF("cubes/urdf/6y_segment.urdf", basePosition= [-4, 6, 0.2], useFixedBase=1, physicsClientId=physicsClient)
+	p.loadURDF("cubes/urdf/6y_segment.urdf", basePosition= [-4, -6, 0.2] , useFixedBase=1, physicsClientId=physicsClient)
+	p.loadURDF("cubes/urdf/4x_segment.urdf", basePosition= [0, 6, 0.2], useFixedBase=1, physicsClientId=physicsClient)
+	p.loadURDF("cubes/urdf/4x_segment.urdf", basePosition= [0, -6, 0.2] , useFixedBase=1, physicsClientId=physicsClient)
+
+
+
+
 def spawn_cube_and_patch(physicsClient):
 	
 	cube_position_ROGYBP = [[1, 1, 0.025], [-9, -2, 0.025], [-2, 5, 0.025], [8, -7, 0.025], [-3, 7, 0.025], [3, -7, 0.025]] 

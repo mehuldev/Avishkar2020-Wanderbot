@@ -1,0 +1,600 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"svg",
+				"svgpath"
+			],
+			[
+				"stat",
+				"start"
+			],
+			[
+				"bas",
+				"baseOrientation"
+			],
+			[
+				"wal",
+				"walk_by_leftLeg"
+			],
+			[
+				"phi",
+				"phi0"
+			],
+			[
+				"arc",
+				"arctan2"
+			],
+			[
+				"arctan",
+				"arctan2"
+			],
+			[
+				"ini",
+				"initialbaseOrientation"
+			],
+			[
+				"init",
+				"initialbasePoint"
+			],
+			[
+				"R6",
+				"R6b"
+			],
+			[
+				"base",
+				"basePosition"
+			],
+			[
+				"cubea",
+				"cubea"
+			],
+			[
+				"move",
+				"move_husky_to_point"
+			],
+			[
+				"cube",
+				"cubePosition"
+			],
+			[
+				"mau",
+				"manual_husky_kuka_control"
+			],
+			[
+				"slider",
+				"slider3"
+			],
+			[
+				"curr",
+				"curr_joint_value"
+			],
+			[
+				"crr",
+				"currentOrientation"
+			],
+			[
+				"en",
+				"endPosition"
+			],
+			[
+				"i",
+				"i"
+			],
+			[
+				"final",
+				"finalPoint"
+			],
+			[
+				"initi",
+				"initialPoint"
+			],
+			[
+				"li",
+				"linearVelocity"
+			],
+			[
+				"initialO",
+				"intitailOrientation"
+			],
+			[
+				"fina",
+				"finalPoint"
+			],
+			[
+				"a",
+				"array"
+			],
+			[
+				"end",
+				"endOrientation"
+			],
+			[
+				"cu",
+				"curr_joint_value"
+			],
+			[
+				"slide",
+				"slider1"
+			],
+			[
+				"joint",
+				"jointValues"
+			],
+			[
+				"kuka",
+				"kukaId"
+			],
+			[
+				"kuk",
+				"kukaId"
+			],
+			[
+				"delta",
+				"deltaX"
+			],
+			[
+				"delt",
+				"deltaY"
+			],
+			[
+				"wheel",
+				"wheelVelocities"
+			],
+			[
+				"del",
+				"deltay"
+			],
+			[
+				"rot",
+				"rotation"
+			],
+			[
+				"de",
+				"deltay"
+			],
+			[
+				"multipl",
+				"multiplication"
+			],
+			[
+				"c",
+				"cin"
+			],
+			[
+				"print",
+				"printSol"
+			],
+			[
+				"sol",
+				"solveknight"
+			],
+			[
+				"add",
+				"add_node"
+			],
+			[
+				"n",
+				"n"
+			],
+			[
+				"prin",
+				"printAlignment"
+			],
+			[
+				"s",
+				"s"
+			],
+			[
+				"strp",
+				"strpawan"
+			],
+			[
+				"string",
+				"stringstream"
+			],
+			[
+				"pro",
+				"productA"
+			],
+			[
+				"dis",
+				"dishRouter"
+			],
+			[
+				"dish",
+				"dishId"
+			],
+			[
+				"bo",
+				"body"
+			],
+			[
+				"st",
+				"statusCode"
+			],
+			[
+				"body",
+				"bodyParser"
+			],
+			[
+				"re",
+				"req"
+			],
+			[
+				"backgroun",
+				"background-color\tproperty"
+			],
+			[
+				"padding",
+				"padding-bottom\tproperty"
+			],
+			[
+				"borde",
+				"border-radius\tproperty"
+			],
+			[
+				"tra",
+				"transition\tproperty"
+			],
+			[
+				"inlin",
+				"inline-block\tdisplay"
+			],
+			[
+				"font",
+				"font-size\tproperty"
+			],
+			[
+				"square",
+				"squares"
+			],
+			[
+				"random",
+				"randomColor"
+			],
+			[
+				"for",
+				"for\tfor (…) {…}"
+			],
+			[
+				"messa",
+				"messageDisplay"
+			],
+			[
+				"ma",
+				"margin-left\tproperty"
+			],
+			[
+				"text",
+				"text-align\tproperty"
+			],
+			[
+				"pading",
+				"padding-left\tproperty"
+			],
+			[
+				"last",
+				"lastName"
+			],
+			[
+				"fir",
+				"firstName"
+			],
+			[
+				"back",
+				"background-repeat\tproperty"
+			],
+			[
+				"align",
+				"align-items\tproperty"
+			],
+			[
+				"rg",
+				"rgba()\tcolor"
+			],
+			[
+				"p",
+				"placeholder\tAttr"
+			],
+			[
+				"v",
+				"vector\tstd::vector"
+			],
+			[
+				"beg",
+				"begin"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 192.0,
+		"history":
+		[
+			"python invkin3DOFspherical.py",
+			"python invkin3DOFspherical",
+			"install package",
+			"install pakage"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/husky_kuka_motion_control_version6.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/spawnCodeWanderbot.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/WanderBotRound1.py",
+		"/C/CarlaSimulator/PythonClient/Code_for_viewing_collected_Data.py",
+		"/C/CarlaSimulator/PythonClient/Data_collection.py",
+		"/C/CarlaSimulator/PythonClient/Data_collection_Share1.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/husky_kuka_motion_control_version5.py",
+		"/C/Users/agraw/PycharmProjects/Inverse-Kinematics-6-DOF-for-ERC-2019-master(1)/Inverse-Kinematics-6-DOF-for-ERC-2019-master/puru_inv_kin/invkin_puru.py",
+		"/C/Users/agraw/PycharmProjects/Inverse-Kinematics-6-DOF-for-ERC-2019-master(1)/Inverse-Kinematics-6-DOF-for-ERC-2019-master/puru_inv_kin/motion_control.py",
+		"/C/Users/agraw/OneDrive/Desktop/racer/hasky_kuka_hello.py",
+		"/C/Users/agraw/inkspace/9.svg",
+		"/C/Users/agraw/inkspace/8.svg",
+		"/C/Users/agraw/inkspace/&.svg",
+		"/C/Users/agraw/inkspace/6.svg",
+		"/C/Users/agraw/inkspace/61.svg",
+		"/C/Users/agraw/inkspace/&1.svg",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/cubes/urdf/xy_segment.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/husky_kuka_motion_control_version7.py",
+		"/C/Users/agraw/inkspace/robotics.svg",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/husky_kuka_motion_control_version4.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/husky_kuka_motion_control_version3.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/husky_kuka_motion_control_version2.py",
+		"/D/projects/IAS  write up.txt",
+		"/D/projects/dorna 5dof arm/dorna motion control.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/cubes/urdf/y_segment.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/cubes/urdf/x_segment.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/cubes/urdf/cube_small_extended_in_X_direction.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/cubes/urdf/cube_small.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/cubes/urdf/placeingSquare.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/Husky_arm2.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/Husky_arm2vesrsion2.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/junkfile.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/kuka_experimental-indigo-devel/kuka_kr210_support/urdf/kr210l150.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/cubes/urdf/cube_small_extended_in_Y_direction.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/invkin_puru.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/invkin_puru_kukaVersion.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/husky_motion_control.py",
+		"/C/Users/agraw/OneDrive/Desktop/bipedal-robot-walking-simulation-master/humanoid_leg_12dof.8.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/bipedal-robot-walking-simulation-master/walking_simulation_example.py",
+		"/C/Users/agraw/OneDrive/Desktop/bipedal-robot-walking-simulation-master/biped_puru_version3.py",
+		"/C/Users/agraw/OneDrive/Desktop/bipedal-robot-walking-simulation-master/walkGenerator.py",
+		"/C/Users/agraw/OneDrive/Desktop/bipedal-robot-walking-simulation-master/play_various_walking.py",
+		"/C/Users/agraw/OneDrive/Desktop/bipedal-robot-walking-simulation-master/motorController.py",
+		"/C/Users/agraw/OneDrive/Desktop/bipedal-robot-walking-simulation-master/biped_puru.pi.py",
+		"/C/Users/agraw/OneDrive/Desktop/Kuka_Arm_With_Gripper/invKin.py",
+		"/C/Users/agraw/OneDrive/Desktop/Kuka_Arm_With_Gripper/invkin_puru.py",
+		"/C/Users/agraw/OneDrive/Desktop/Kuka_Arm_With_Gripper/invkin_puru_kukaVersion.py",
+		"/C/Users/agraw/OneDrive/Desktop/Kuka_Arm_With_Gripper/Kuka_Arm.py",
+		"/C/Users/agraw/OneDrive/Desktop/Kuka_Arm_With_Gripper/motion_control_puru.py",
+		"/C/Users/agraw/OneDrive/Desktop/Kuka_Arm_With_Gripper/ikvkin_puru_kukaVersion.pi.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(puru2411)/husky_kuka_motion_control_version1.py",
+		"/C/Users/agraw/OneDrive/Desktop/Kuka_Arm_With_Gripper/Kuka_Arm_slider_control.py",
+		"/C/Users/agraw/OneDrive/Desktop/Kuka_Arm_With_Gripper/armControl.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/invkin_puru.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/junkfile.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/husky_motion_control.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/husky_kuka_motion_control_version2.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/husky_kuka_motion_control_version1.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/motion_control.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/husky_kuka_motion_control_vesion2.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/cubes/urdf/cube_small.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/cubes/urdf/cube_small_extended_in_X_direction.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/cubes/urdf/cube_small_extended_in_Y_direction.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/kuka_experimental-indigo-devel/kuka_kr210_support/urdf/kr210l150.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/test1.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/test.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/state.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/husky_kuka_motion_control.py",
+		"/C/Users/agraw/OneDrive/Desktop/Camera_Related_Codes/Cam_Bullet_debuger.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/cube_small.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/cube_small_extended_in_Y_direction.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/cube_small_extended_in_X_direction.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/kuka_experimental-indigo-devel/kuka_kr210_support/meshes/kr210l150/collision/base_link.stl",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm(pueu2411)/cube.obj",
+		"/C/Users/agraw/Downloads/robotic arm.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm/husky/husky.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm/kuka_experimental-indigo-devel/kuka_kr210_support/urdf/kr210l150.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm/cube_small.urdf",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm/test.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm/husky_kuka_motion_control.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm/husky_motion_control.py",
+		"/C/Users/agraw/OneDrive/Desktop/racer/race_car_hello.py",
+		"/C/Users/agraw/OneDrive/Desktop/racer/turtlebot_hello.py",
+		"/C/Users/agraw/OneDrive/Desktop/racer/hello_husky.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm/junkfile.py",
+		"/C/Users/agraw/OneDrive/Desktop/Husky+Arm/state.py",
+		"/C/Users/agraw/OneDrive/Desktop/kuka_experimental-indigo-devel/Hello_Arm.py",
+		"/C/projects/robotic arm/3dof/invkin3DOFspherical.py",
+		"/C/Users/agraw/OneDrive/Desktop/Kuka_Arm/Kuka_Arm.py",
+		"/C/Users/agraw/OneDrive/Desktop/Kuka_Arm/Kuka_Arm_IK.py",
+		"/C/sublime codes/practice.cpp",
+		"/C/sublime codes/outputf.in",
+		"/C/sublime codes/inputf.in",
+		"/C/Users/agraw/OneDrive/Desktop/Camera_Related_Codes/Cam_Bullet_modified.py",
+		"/C/Users/agraw/OneDrive/Desktop/Camera_Related_Codes/Cam_Bullet.py",
+		"/C/sublime codes/template.cpp",
+		"/C/sublime codes/a.cpp",
+		"/C/sublime codes/string_multiplication_addition.cpp",
+		"/C/sublime codes/b.cpp",
+		"/C/sublime codes/test.cpp",
+		"/C/sublime codes/ds_algo/week1_assignments/height_of_tree.cpp",
+		"/C/sublime codes/ds_algo/week1_assignments/checking_brakets.cpp",
+		"/C/sublime codes/singly linked list.cpp",
+		"/C/sublime codes/ds_algo/week6_assignment/placing_parenthesis.cpp",
+		"/C/sublime codes/ds_algo/week6_assignment/knapsac_without_repetation.cpp",
+		"/C/sublime codes/ds_algo/week6_assignment/Partitioning_Souvenirs_among_3.cpp",
+		"/C/sublime codes/ds_algo/week5_assignment/matching of string via editing distance.cpp",
+		"/C/sublime codes/ds_algo/week5_assignment/Longest Common Subsequence of three Sequences.cpp",
+		"/C/sublime codes/ds_algo/week5_assignment/Longest Common Subsequence of Two Sequences.cpp",
+		"/C/sublime codes/ds_algo/week5_assignment/premitive_calculator.cpp",
+		"/C/sublime codes/ds_algo/week5_assignment/editing_distance.cpp",
+		"/C/sublime codes/ds_algo/week5_assignment/min_coins_dp.cpp",
+		"/C/sublime codes/ds_algo/week4_assignments/inversion.cpp",
+		"/C/sublime codes/ds_algo/week4_assignments/closest_points.cpp",
+		"/C/sublime codes/ds_algo/week4_assignments/lottery.cpp",
+		"/C/sublime codes/ds_algo/week3_assignment/colecting_signature.cpp",
+		"/C/sublime codes/ds_algo/week4_assignments/majority.cpp",
+		"/C/sublime codes/ds_algo/week4_assignments/QuickSort.cpp",
+		"/C/sublime codes/ds_algo/week4_assignments/binary_search.cpp",
+		"/C/sublime codes/ds_algo/week3_assignment/max_salary.cpp",
+		"/C/sublime codes/ds_algo/week3_assignment/max_prize.cpp",
+		"/C/sublime codes/ds_algo/week3_assignment/max_revenue.cpp",
+		"/C/sublime codes/ds_algo/week3_assignment/refuleing.cpp",
+		"/C/sublime codes/ds_algo/week3_assignment/max_value.cpp",
+		"/C/sublime codes/ds_algo/week3_assignment/money_change.cpp",
+		"/C/cs projects/ds and algo- oursera/resources of algorithmic toolbox/week3_greedy_algorithms/1_money_change/change.cpp",
+		"/C/cs projects/ds and algo- oursera/resources of algorithmic toolbox/week1_programming_challenges/2_maximum_pairwise_product/max_pairwise_product.cpp",
+		"/C/Users/agraw/source/nodejsJogeshMupala/node-mongo/package.json"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 48.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/User/cpp.sublime-build",
+	"project": "husky_kuka_motion_control_version1.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 194.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
