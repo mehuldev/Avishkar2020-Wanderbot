@@ -898,13 +898,13 @@ start = time.time()
 
 
 
-# for key in cubePositions.keys():
-# 	print(key, cubePositions[key])
-# 	pick_cube_from([cubePositions[key][0], cubePositions[key][1], 0])
-# 	place_cube_to([patchPositions[key][0], patchPositions[key][1], 0])
+for key in cubePositions.keys():
+	print(key, cubePositions[key])
+	pick_cube_from([cubePositions[key][0], cubePositions[key][1], 0])
+	place_cube_to([patchPositions[key][0], patchPositions[key][1], 0])
 
-pick_cube_from([cubePositions["purple"][0], cubePositions["purple"][1], 0])
-place_cube_to([patchPositions["purple"][0], patchPositions["purple"][1], 0])
+# pick_cube_from([cubePositions["purple"][0], cubePositions["purple"][1], 0])
+# place_cube_to([patchPositions["purple"][0], patchPositions["purple"][1], 0])
 
 move_husky_to_point_in_maze(0,0,0)
 wave_at(0, 0, 0)
