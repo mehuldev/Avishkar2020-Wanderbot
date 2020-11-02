@@ -844,12 +844,13 @@ def place_cube_to(cubePosition):
 
 def move_husky_to_point_in_maze(x, y, z):
 	x1, y1, z1 = p.getLinkStates(husky, [0])[0][0]
-	path = Astar.calculateShortestPath([x, y], [x1, y1])
+	path = Astar.calculateShortestPath([x1, y1], [x, y])
 	for i in range(len(path)-1):
 		x3,y3 = path[i]
 		x3,y3 = convertCoordinates(x3,y3)
 		if(np.sqrt((x-x3)**2 + (y-y3)**2)<=0.8):
 			break
+		print(i, ')', x3,y3)
 		move_husky_to_point(x3, y3, z1)
 
 	move_husky_to_point(x, y, z)
@@ -897,10 +898,13 @@ start = time.time()
 
 
 
-for key in cubePositions.keys():
-	print(key, cubePositions[key])
-	pick_cube_from([cubePositions[key][0], cubePositions[key][1], 0])
-	place_cube_to([patchPositions[key][0], patchPositions[key][1], 0])
+# for key in cubePositions.keys():
+# 	print(key, cubePositions[key])
+# 	pick_cube_from([cubePositions[key][0], cubePositions[key][1], 0])
+# 	place_cube_to([patchPositions[key][0], patchPositions[key][1], 0])
+
+pick_cube_from([cubePositions["purple"][0], cubePositions["purple"][1], 0])
+place_cube_to([patchPositions["purple"][0], patchPositions["purple"][1], 0])
 
 move_husky_to_point_in_maze(0,0,0)
 wave_at(0, 0, 0)
