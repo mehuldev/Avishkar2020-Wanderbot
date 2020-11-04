@@ -638,7 +638,7 @@ def move_endeffector_to_point(finalPoint, finalOrientation):
 	while t<=1:
 		q1, q2, q3, q4, q5, q6 = get_point_parameters(curr_joint_value, final_joint_value, t)
 		p.setJointMotorControlArray( kukaId, range(11), p.POSITION_CONTROL, targetPositions= [q1, q2, q3, q4, q5, q6, curr_joint_value[6], curr_joint_value[7], curr_joint_value[8], curr_joint_value[9], curr_joint_value[10]])
-		t += .00003   
+		t += .0003   
 
 	curr_joint_value[0]= final_joint_value[0]; curr_joint_value[1]= final_joint_value[1]; curr_joint_value[2]= final_joint_value[2] 
 	curr_joint_value[3]= final_joint_value[3]; curr_joint_value[4]= final_joint_value[4]; curr_joint_value[5]= final_joint_value[5]
@@ -769,21 +769,21 @@ def pick_cube_from(cubePosition):
 	x1, y1, z1 = p.getLinkStates(husky, [0])[0][0]
 	path = Astar.calculateShortestPath([x1,y1],[x2,y2])
 	i=0
-	print("going to pick at " , x2, y2)
-	print("path : ", path)
+	# print("going to pick at " , x2, y2)
+	# print("path : ", path)
 	for i in range(len(path)-1):
 		x3,y3 = path[i]
 		x3,y3 = convertCoordinates(x3,y3)
 		if(np.sqrt((x2-x3)**2 + (y2-y3)**2)<=0.8):
 			break
-		print(i, ')', x3,y3)
+		# print(i, ')', x3,y3)
 		move_husky_to_point(x3, y3, z2)
 	
 	# x3,y3 = path[len(path)-1]
 	# x3,y3 = convertCoordinates(x3,y3)
-	print(len(path)-1, ').', x2, y2)
+	# print(len(path)-1, ').', x2, y2)
 	x, y, z = calculate_position_for_husky(x2, y2, z2)
-	print("will stop at ", x, y)
+	# print("will stop at ", x, y)
 	move_husky_to_point(x, y, z)
 
 	initialOrientation = p.getLinkStates(kukaId, [6])[0][1]
@@ -808,21 +808,21 @@ def place_cube_to(cubePosition):
 	x1, y1, z1 = p.getLinkStates(husky, [0])[0][0]
 	path = Astar.calculateShortestPath([x1,y1],[x2,y2])
 	i =0
-	print("going to place at " , x2, y2)
-	print("path : ", path)
+	# print("going to place at " , x2, y2)
+	# print("path : ", path)
 	for i in range(len(path)-1):
 		x3,y3 = path[i]
 		x3,y3 = convertCoordinates(x3,y3)
 		if(np.sqrt((x2-x3)**2 + (y2-y3)**2)<=0.8):
 			break
-		print(i, ')', x3,y3)
+		# print(i, ')', x3,y3)
 		move_husky_to_point(x3, y3, z2)
 
 	# x3,y3 = path[len(path)-1]
 	# x3,y3 = convertCoordinates(x3,y3)
-	print(len(path)-1, ').', x2, y2)
+	# print(len(path)-1, ').', x2, y2)
 	x, y, z = calculate_position_for_husky(x2, y2, z2)
-	print("will stop at ", x, y, "\n")
+	# print("will stop at ", x, y, "\n")
 	move_husky_to_point(x, y, z)
 
 	initialOrientation = p.getLinkStates(kukaId, [6])[0][1]
@@ -850,7 +850,7 @@ def move_husky_to_point_in_maze(x, y, z):
 		x3,y3 = convertCoordinates(x3,y3)
 		if(np.sqrt((x-x3)**2 + (y-y3)**2)<=0.8):
 			break
-		print(i, ')', x3,y3)
+		# print(i, ')', x3,y3)
 		move_husky_to_point(x3, y3, z1)
 
 	move_husky_to_point(x, y, z)
@@ -898,13 +898,34 @@ start = time.time()
 
 
 
-for key in cubePositions.keys():
-	print(key, cubePositions[key])
-	pick_cube_from([cubePositions[key][0], cubePositions[key][1], 0])
-	place_cube_to([patchPositions[key][0], patchPositions[key][1], 0])
+# for key in cubePositions.keys():
+# 	print(key, cubePositions[key])
+# 	pick_cube_from([cubePositions[key][0], cubePositions[key][1], 0])
+# 	place_cube_to([patchPositions[key][0], patchPositions[key][1], 0])
 
-# pick_cube_from([cubePositions["purple"][0], cubePositions["purple"][1], 0])
-# place_cube_to([patchPositions["purple"][0], patchPositions["purple"][1], 0])
+print("red", cubePositions["red"])
+pick_cube_from([cubePositions["red"][0], cubePositions["red"][1], 0])
+place_cube_to([patchPositions["red"][0], patchPositions["red"][1], 0])
+
+print("green", cubePositions["green"])
+pick_cube_from([cubePositions["green"][0], cubePositions["green"][1], 0])
+place_cube_to([patchPositions["green"][0], patchPositions["green"][1], 0])
+
+print("orange", cubePositions["orange"])
+pick_cube_from([cubePositions["orange"][0], cubePositions["orange"][1], 0])
+place_cube_to([patchPositions["orange"][0], patchPositions["orange"][1], 0])
+
+print("blue", cubePositions["blue"])
+pick_cube_from([cubePositions["blue"][0], cubePositions["blue"][1], 0])
+place_cube_to([patchPositions["blue"][0], patchPositions["blue"][1], 0])
+
+print("yellow", cubePositions["yellow"])
+pick_cube_from([cubePositions["yellow"][0], cubePositions["yellow"][1], 0])
+place_cube_to([patchPositions["yellow"][0], patchPositions["yellow"][1], 0])
+
+print("purple", cubePositions["purple"])
+pick_cube_from([cubePositions["purple"][0], cubePositions["purple"][1], 0])
+place_cube_to([patchPositions["purple"][0], patchPositions["purple"][1], 0])
 
 move_husky_to_point_in_maze(0,0,0)
 wave_at(0, 0, 0)
