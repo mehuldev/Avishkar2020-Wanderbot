@@ -19,7 +19,6 @@ import matplotlib.pyplot as plt
 # for path planning
 from svg.path import Path, Line, Arc, CubicBezier, QuadraticBezier, parse_path
 
-
 # Connecting to pybullet simulator in Shared Memory
 clid = p.connect(p.SHARED_MEMORY)
 if (clid < 0):
@@ -33,7 +32,6 @@ p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
 p.loadURDF("plane.urdf", [0, 0, 0.0])
 p.setGravity(0, 0, -10)
-
 
 # placing patchs to place the cube
 cubeRPosition = [7, -2, 0.00025]
@@ -60,22 +58,18 @@ scale = 0.4
 kukaId = p.loadURDF("kuka_experimental-indigo-devel/kuka_kr210_support/urdf/kr210l150.urdf",
                     kukaCenter, kukaOrientation, globalScaling=scale)
 
-
 # setting kuka initialy 0
 curr_joint_value = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 p.setJointMotorControlArray(kukaId, range(
     11), p.POSITION_CONTROL, targetPositions=curr_joint_value)
 
-
 # puting kuka on husky
 cid = p.createConstraint(husky, 1, kukaId, -1, p.JOINT_FIXED,
                          [0, 0, 0], [0.0, 0.0, 0.14023], [0., 0., 0], [0.0, 0.0, 0.0])
 
-
 # activating real time simulation
 useRealTimeSimulation = 1
 p.setRealTimeSimulation(useRealTimeSimulation)
-
 
 # printing the basic info of robot
 # print("the joint info of husky : ")
@@ -96,18 +90,14 @@ p.setRealTimeSimulation(useRealTimeSimulation)
 # giving a cool off time of 2 sec
 # time.sleep(2)
 
-
 ################################################################################################################
 ################################################################################################################
-
 
 ################################################################################################################
 ################################################################################################################
 # image captureing and processing
 
 """----------------------Image Processing and Object Detection-----------------------------"""
-
-
 def boxDetection2411(rgbaImg, width, height):
     """
     Takes Image frame along with width and height and returns positions of cube with respect to reference frame
@@ -284,7 +274,6 @@ def boxDetection2411(rgbaImg, width, height):
 
     return imageFrame, positionsCube, positionsPatch
 
-
 # setting camera parameters to take 1 image
 def take_1photo():
     imageFrame = []
@@ -299,23 +288,6 @@ def take_1photo():
         rgbaImg, width, height)
     imageFrame.append(img)
     return imageFrame, positionsCube, positionsPatch
-
-
-# setting camera parameters to take 4 images
-# def take_4photo():
-# 	imageFrame = []
-# 	width = 3000
-# 	height = 3000
-
-# 	for j in range(2):
-# 		for k in range(2):
-# 			view_matrix = p.computeViewMatrix([j*12-6, k*12-6, 50], [j*12-6, k*12-6, 0.0], [1, 0, 0])
-# 			projection_matrix = p.computeProjectionMatrix(6, -6, 6, -6, 48.5, 51.1)
-# 			width, height, rgbaImg, depthImg, segImg = p.getCameraImage(width, height, view_matrix, projection_matrix, shadow=True, renderer=p.ER_BULLET_HARDWARE_OPENGL)
-# 			img, positionsCube, positionsPatch = boxDetection2411(rgbaImg,width,height)
-# 			imageFrame.append(img)
-# 	return imageFrame, positionsCube, positionsPatch
-
 
 # capturing images
 imageFrame, positionsCube, positionsPatch = take_1photo()
@@ -336,7 +308,6 @@ print("\nposition of cube holders (R, G, B, O, Y, P) : ", positionsPatch, '\n')
 ################################################################################################################
 ################################################################################################################
 
-
 ################################################################################################################
 ################################################################################################################
 
@@ -349,10 +320,8 @@ a4 = 0.054*scale
 a5 = 1.5*scale
 a6 = 0.303*scale
 
-
 def get_hypotenuse(a, b):
     return np.sqrt(a*a + b*b)
-
 
 def get_cosine_law_angle(a, b, c):
     """given all sides of a triangle a, b, c
@@ -360,14 +329,12 @@ def get_cosine_law_angle(a, b, c):
     gamma = np.arccos((a*a + b*b - c*c) / (2*a*b))
     return gamma
 
-
 def griperCenter(px, py, pz, R06):
     # calculating griper center
     Xc = px - a6*R06[0, 2]
     Yc = py - a6*R06[1, 2]
     Zc = pz - a6*R06[2, 2]
     return Xc, Yc, Zc
-
 
 def get_first3Angles(Xc, Yc, Zc):
 
@@ -388,7 +355,6 @@ def get_first3Angles(Xc, Yc, Zc):
 
     return q1, q2, q3
 
-
 def get_last3Angles(R36):
 
     # R3_6 =  Matrix([[-np.sin(q4)*np.sin(q6) + np.cos(q4)*np.cos(q5)*np.cos(q6), -np.sin(q4)*np.cos(q6) - np.sin(q6)*np.cos(q4)*np.cos(q5), -np.sin(q5)*np.cos(q4)],
@@ -407,7 +373,6 @@ def get_last3Angles(R36):
     q4 = np.arctan2(-R36[1, 2], -R36[0, 2])
 
     return q4, q5, q6
-
 
 def get_kuka_angles(basePosition, baseOrientation, point, orientation):
     a = 0.015772399999437497
@@ -471,16 +436,13 @@ def get_kuka_angles(basePosition, baseOrientation, point, orientation):
 
     return q1, q2, q3, q4, q5, q6
 
-
 ################################################################################################################
 ################################################################################################################
-
 
 ################################################################################################################
 ################################################################################################################
 
 """------------------------Motion Control of Husky----------------------"""
-
 
 # spiting out the rotation speed according to proportionality
 def speed_for_rotation(rotation, currOrientation):
@@ -496,7 +458,6 @@ def speed_for_rotation(rotation, currOrientation):
     # print("currOrientation, rotation, v : ", currOrientation, rotation, v)
     return v
 
-
 # spiting out the forward speed according to proportionality
 def speed_for_forward(delX, delY):
     kp = 10
@@ -510,9 +471,7 @@ def speed_for_forward(delX, delY):
 
     return v
 
-
 def get_target_parameters(x, y, z):
-
     currPosition = p.getLinkStates(husky, [0])[0][0]
     currOrientation = p.getEulerFromQuaternion(
         p.getLinkStates(husky, [0])[0][1])
@@ -526,7 +485,6 @@ def get_target_parameters(x, y, z):
     rotation = [0, 0, np.arctan2(deltaY, deltaX)]
     # print("deltaY, deltaX : ", deltaY, deltaX)
     return deltaX, deltaY, rotation, currOrientation, currPosition
-
 
 def move_husky_to_point(x, y, z):
     # print('moving husky to ', x, y, z)
@@ -588,26 +546,19 @@ def move_husky_to_point(x, y, z):
         p.setJointMotorControl2(
             husky, wheels[i], p.VELOCITY_CONTROL, targetVelocity=wheelVelocities[i], force=1000)
 
-
 ################################################################################################################
 ################################################################################################################
-
 
 ################################################################################################################
 ################################################################################################################
 
 """-------------------------Motion Control of end effector-------------------------"""
-
-
 def get_point_parameters(curr_joint_value, final_joint_value, t):
-
     inst_joint_value = np.array(
         curr_joint_value[:6]) + t*(np.array(final_joint_value) - np.array(curr_joint_value[:6]))
     return inst_joint_value
 
-
 def move_endeffector_to_point(finalPoint, finalOrientation):
-
     kukaBasePosition = p.getLinkStates(kukaId, [0])[0][0]
     kukaBaseOrientation = p.getEulerFromQuaternion(
         p.getLinkStates(husky, [0])[0][1])
@@ -629,7 +580,6 @@ def move_endeffector_to_point(finalPoint, finalOrientation):
     curr_joint_value[4] = final_joint_value[4]
     curr_joint_value[5] = final_joint_value[5]
 
-
 def hold(flag):
     if flag:
         curr_joint_value[7] = 1
@@ -637,38 +587,29 @@ def hold(flag):
     else:
         curr_joint_value[7] = 0
         curr_joint_value[8] = 0
-
     p.setJointMotorControlArray(kukaId, range(
         11), p.POSITION_CONTROL, targetPositions=curr_joint_value)
     time.sleep(1)
 
-
 ################################################################################################################
 ################################################################################################################
-
 
 ################################################################################################################
 ################################################################################################################
 
 """-------------------------Picking object from its position-------------------"""
-
-
 def calculate_position_for_husky(x2, y2, z2):
     x1, y1, z1 = p.getLinkStates(husky, [0])[0][0]
-
     t = 0.7 / np.sqrt((x1-x2)**2 + (y1-y2)**2)
     x = x2 + t*(x1-x2)
     y = y2 + t*(y1-y2)
-
     return x, y, z2
-
 
 def pick_cube_from(cubePosition):
     [x2, y2, z2] = cubePosition
     x, y, z = calculate_position_for_husky(x2, y2, z2)
     # print('move husky to ',x, y, z)
     move_husky_to_point(x, y, z)
-
     initialOrientation = p.getLinkStates(kukaId, [6])[0][1]
     initialOrientation = p.getEulerFromQuaternion(initialOrientation)
 
@@ -685,16 +626,13 @@ def pick_cube_from(cubePosition):
     move_endeffector_to_point([x2, y2, 1], initialOrientation)
     time.sleep(1)
 
-
 def place_cube_to(cubePosition):
     [x2, y2, z2] = cubePosition
     x, y, z = calculate_position_for_husky(x2, y2, z2)
     # print('move husky to ',x, y, z)
     move_husky_to_point(x, y, z)
-
     initialOrientation = p.getLinkStates(kukaId, [6])[0][1]
     initialOrientation = p.getEulerFromQuaternion(initialOrientation)
-
     # print("husky orientation ", initialOrientation)
     time.sleep(.5)
     # move_endeffector_to_point([x2, y2, 1], [0, np.pi/2, 0])
@@ -702,54 +640,43 @@ def place_cube_to(cubePosition):
     move_endeffector_to_point([x2, y2, .11], [0, np.pi/2, 0])
     time.sleep(1)
     hold(0)
-
     move_endeffector_to_point([x2, y2, .4], [0, np.pi/2, 0])
     # move_endeffector_to_point([x2, y2, 1], [0, np.pi/2, 0])
     move_endeffector_to_point([x2, y2, 1], initialOrientation)
     time.sleep(1)
 
-
 ################################################################################################################
 ################################################################################################################
-
 
 ################################################################################################################
 ################################################################################################################
 
 """---------------Creating and Following the Trajectory of the Path---------"""
-
 def get_trajectory(t, id):
     # define the trajectory
     if(id == 1):  # trjectory of eight
         px = .6
         py = 1/6*np.sin(2 * t)
         pz = 1 + 1/2*np.sin(t)
-
     return px, py, pz
-
 
 def follow_trajectory(id):
     # getting initial point of tregectory
     px, py, pz = get_trajectory(0, id)
-
     kukaBasePosition = p.getLinkStates(kukaId, [0])[0][0]
     kukaBaseOrientation = p.getEulerFromQuaternion(
         p.getLinkStates(husky, [0])[0][1])
-
     prevPose = [0, 0, 0]
     prevPose1 = [0, 0, 0]
     hasPrevPose = 0
     trailDuration = 20
     t = 0  # parametric variable
-
     while t <= 2*np.pi+.1:
         # getting the value of speed inf position after each iteration according to specified trajectory
         px, py, pz = get_trajectory(t, id)
-
         # getting values of each joints according to points
         q1, q2, q3, q4, q5, q6 = get_kuka_angles(
             kukaBasePosition, kukaBaseOrientation, [px, py, pz], [0, 0, 0])
-
         p.setJointMotorControlArray(kukaId, range(11), p.POSITION_CONTROL, targetPositions=[
                                     q1, q2, q3, q4, q5, q6, curr_joint_value[6], curr_joint_value[7], curr_joint_value[8], curr_joint_value[9], curr_joint_value[10]])
         t += .007
@@ -761,7 +688,6 @@ def follow_trajectory(id):
         prevPose1 = ls[4]
         hasPrevPose = 1
 
-
 def create_plot():
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
@@ -770,7 +696,6 @@ def create_plot():
     ax.set_zlabel('z axis')
     ax.set_autoscale_on(False)
     return fig, ax
-
 
 def update_plot(X, Y, Z,  fig, ax, n):
     X = np.reshape(X, (1, n))
@@ -787,9 +712,7 @@ def update_plot(X, Y, Z,  fig, ax, n):
     fig.canvas.flush_events()
     plt.pause(.001)
 
-
 def get_path(id):
-
     if(id == 1):   # set of points for "8"
         svgpath = "m 185.34925,203.60654 q 0,30.14579 -23.58557,50.13885 -23.42937,19.99306 -59.04201,19.99306 -37.799387,0 -60.291583,-19.52447 -22.336,-19.52448 -22.336,-49.98266 0,-19.36828 11.246098,-34.98786 11.246098,-15.77578 31.707748,-24.99133 v -0.93717 Q 44.304437,133.31842 35.24508,121.44754 26.341919,109.57666 26.341919,91.770341 q 0,-26.240896 21.555021,-43.734826 21.555021,-17.49393 54.82473,-17.49393 34.83166,0 55.6057,16.712951 20.77405,16.712951 20.77405,42.485259 0,15.775775 -9.84034,31.082965 -9.84034,15.15099 -28.89622,23.74176 v 0.93718 q 21.86741,9.37175 33.4259,23.11698 11.55849,13.74523 11.55849,34.98786 z M 148.33084,90.052187 q 0,-16.712951 -12.96425,-26.553287 -12.80806,-9.996532 -32.80112,-9.996532 -19.68067,0 -32.33253,9.371749 -12.495664,9.371748 -12.495664,25.30372 0,11.246098 6.247832,19.524473 6.404028,8.12218 19.212084,14.52621 5.779245,2.81153 16.556755,7.34121 10.933703,4.52967 21.242633,7.49739 15.46338,-10.30892 21.39882,-21.39882 5.93544,-11.0899 5.93544,-25.616113 z m 4.84207,116.522073 q 0,-14.37002 -6.40403,-22.96079 -6.24783,-8.74696 -24.67893,-17.49393 -7.34121,-3.4363 -16.08817,-6.40402 -8.746966,-2.96772 -23.273175,-8.27838 -14.057623,7.65359 -22.648392,20.77404 -8.434574,13.12045 -8.434574,29.6772 0,21.08644 14.52621,34.83167 14.52621,13.74523 36.862211,13.74523 22.80459,0 36.39362,-11.71469 13.74523,-11.71468 13.74523,-32.17633 z"
 
@@ -817,16 +740,12 @@ def get_path(id):
     # list comprehension version or loop above
     pts = [((p.real-100)/200, (300-p.imag)/200)
            for p in (path.point(i/n) for i in range(0, n+1))]
-
     return pts
 
-
 def follow_path(id):
-
     X = []
     Y = []
     Z = []
-
     kukaBasePosition = p.getLinkStates(kukaId, [0])[0][0]
     kukaBaseOrientation = p.getEulerFromQuaternion(
         p.getLinkStates(husky, [0])[0][1])
@@ -849,14 +768,12 @@ def follow_path(id):
     fig, ax = create_plot()
 
     for i in range(len(pts)):
-
         (py, pz) = pts[i]
         px = 0.7
         # print(px, py, pz)
         X.append(px)
         Y.append(py)
         Z.append(pz)
-
         # getting values of each joints according to points
         q1, q2, q3, q4, q5, q6 = get_kuka_angles(
             kukaBasePosition, kukaBaseOrientation, [px, py, pz], [0, 0, 0])
@@ -878,7 +795,6 @@ def follow_path(id):
 
 
 def write():		# will write "ROBOTICS"
-
     arr = [[-6, 0], [-6, 2], [-5, 2], [-5, 1], [-6, 1], [-5, 0], [-3, 0], [-3, 2], [-4, 2], [-4, 0], [-1, 0], [-1, 2], [-2, 2], [-2, 1], [-1, 1], [-2, 1], [-2, 0], [1, 0], [1, 2],
            [0, 2], [0, 0], [3, 0], [3, 2], [2, 2], [4, 2], [3, 2], [3, 0], [5, 0], [5, 2], [5, 0], [6, 0], [6, 2], [7, 2], [6, 2], [6, 0], [8, 0], [9, 0], [9, 1], [8, 1], [8, 2], [9.5, 2]]
 

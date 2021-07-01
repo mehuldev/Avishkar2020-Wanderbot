@@ -299,11 +299,6 @@ def modify_path(src,path):
             path[i][0] -= 2
     return path
 
-
-            
-
-
-
 def calculateShortestPath(src,dest):
     '''Description of Maze -
         1 --> Cell is not blocked
